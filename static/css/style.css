@@ -1,0 +1,59 @@
+.chart {
+  display: table-cell;
+  width:100%;
+}
+
+/* buttons */
+/* Emphasis */
+.btn {
+  background: #8F8684;
+  color: white;
+  border-color: #324759;
+  margin: 5px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.title {
+    font-size: 25pt;
+    color: black;
+    text-align: center;
+    
+}
+
+.topBanner {
+    margin-top: 30px;
+    margin-bottom: 30px; 
+    padding-top: 30px;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.body {
+  font-family: "Lucida Sans Unicode";
+}
+
+.mapFilter {
+  margin-bottom: 10px;
+}
+
+.chartGroupTitles {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chartPadding {
+  background-color:#D9D5D2; 
+  padding:1%; 
+  border-color:white; 
+  border:1%; 
+  margin:1%
+}

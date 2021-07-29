@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<!-- set html language to english -->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Olympics Dashboard</title>
+
+        <!-- bootstrap stylesheets and jquery imkports and etc -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <!-- for icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <!-- link css sheet  -->
+        <link rel="stylesheet" href="../static/css/style.css">
+
+        <!-- High Charts -->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+
+        <!-- Plotly -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+        <!-- Leaflet JavaScript -->
+        <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+        <script src="/static/js/jquery-2.1.1.min.js"></script>
+        <style>
+            #map{ height: 800px; width:1000px; margin-left:auto; margin-right:auto; }
+        </style>
+
+
+
+    </head>
+
+    <body class="body">
+            
+        <div class="row topBanner">
+            <div class="col-md-4 text-right">
+            </div>
+            <div class="col-md-4 text-center"><h1 class=title>Olympics By: Scott Schneider, Nicholas Hanashiro</h1></div>            
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 chartPadding" style="padding:2%">
+                <h4><b> Introduction </h4></b>
+                    <p>Unit 19 group project</p>
+                    <p>We will be doing a visual analysis of medals won during the Olympics</p>
+
+                    
+                    <b><p>Please note:</p></b>
+                        <ul>
+                            <li>The analyzed results are not live and therefore do not include the results of the ongoing 2021 Tokyo Olympics.
+                            </li>
+                            <li>We originally had 4 group members but due to unforseen circumstances we lost a member.
+                            </li>
+                            <li>GO TEAM USA
+                             </li>
+                        </ul>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                <h4 style="text-align:center;">Game Selector</h4>
+            </div>  
+            <div class="col-sm-6 col-md-6 col-lg-6 text-center">          
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                <div class="mapFilter">
+                    Select Game: 
+                    <select onchange="changeYear(this)">
+                        <option value="">All Games since 1896</option>
+                        <option value="Summer 1960 - Roma">Summer 1960 - Roma</option>
+                        <option value="Gunnar Nielsen Aaby">Gunnar Nielsen Aaby</option>
+                        <option value="Winter 1960 - Squaw Valley">Winter 1960 - Squaw Valley</option>
+                        <option value="Summer 1964 - Tokyo">Summer 1964 - Tokyo</option>
+                        <option value="Winter 1964 - Innsbruck">Winter 1964 - Innsbruck</option>
+                        <option value="Summer 1968 - Mexico City">Summer 1968 - Mexico City</option>
+                        <option value="Winter 1968 - Grenoble">Winter 1968 - Grenoble</option>
+                        <option value="Summer 1972 - Munich">Summer 1972 - Munich</option>
+                        <option value="Winter 1972 - Sapporo">Winter 1972 - Sapporo</option>
+                        <option value="Summer 1976 - Montreal">Summer 1976 - Montreal</option>
+                        <option value="Winter 1976 - Innsbruck">Winter 1976 - Innsbruck</option>
+                        <option value="Summer 1980 - Moskva">Summer 1980 - Moskva</option>
+                        <option value="Winter 1980 - Lake Placid">Winter 1980 - Lake Placid</option>
+                        <option value="Summer 1984 - Los Angeles">Summer 1984 - Los Angeles</option>
+                        <option value="Winter 1984 - Sarajevo">Winter 1984 - Sarajevo</option>
+                        <option value="Summer 1988 - Seoul">Summer 1988 - Seoul</option>
+                        <option value="Winter 1988 - Calgary">Winter 1988 - Calgary</option>
+                        <option value="Summer 1992 - Barcelona">Summer 1992 - Barcelona</option>
+                        <option value="Winter 1992 - Albertville">Winter 1992 - Albertville</option>
+                        <option value="Winter 1994 - Lillehammer">Winter 1994 - Lillehammer</option>
+                        <option value="Summer 1996 - Atlanta">Summer 1996 - Atlanta</option>
+                        <option value="Winter 1998 - Nagano">Winter 1998 - Nagano</option>
+                        <option value="Summer 2000 - Sydney">Summer 2000 - Sydney</option>
+                        <option value="Winter 2002 - Salt Lake City">Winter 2002 - Salt Lake City</option>
+                        <option value="Summer 2004 - Athina">Summer 2004 - Athina</option>
+                        <option value="Winter 2006 - Torino">Winter 2006 - Torino</option>
+                        <option value="Summer 2008 - Beijing">Summer 2008 - Beijing</option>
+                        <option value="Winter 2010 - Vancouver">Winter 2010 - Vancouver</option>
+                        <option value="Summer 2012 - London">Summer 2012 - London</option>
+                        <option value="Winter 2014 - Sochi">Winter 2014 - Sochi</option>
+                        <option value="Summer 2016 - Rio de Janeiro">Summer 2016 - Rio de Janeiro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                
+            </div>
+        </div>
+        <!-- D3 -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        
+         <div id="plot"></div>
+         <div id="plot2"></div>
+         <div id="plot3"></div>
+         <script src="../static/js/test.js"></script>
+         <script src="../static/js/charts.js"></script>
+    </body>
+
+    <footer style = "margin-left:15px;">
+        <p> <b>Contributors: </b> <br>
+        Scott Schneider <br>
+        Nicholas Hanashiro <br>
+        </p>
+    </footer>
+</html>
